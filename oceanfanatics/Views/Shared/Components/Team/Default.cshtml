@@ -1,0 +1,128 @@
+﻿@model PagedQueryResult<oceanfanatics.Cofoundry.CustomEntities.Team.TeamDisplayModel>
+@inject ICofoundryHelper Cofoundry
+
+@{
+    Layout = null;
+}
+
+
+<div class="js-show-on-scroll flex items-center justify-center w-full h-full py-24 sm:py-8 px-4 hidden lg:block md:block">
+    <div class="w-full relative flex items-center justify-center">
+        <button aria-label="slide backward" class="absolute z-30 left-0 ml-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
+            <svg class="dark:text-gray-900" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+        <div class="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
+            <div id="slider" class="h-full flex md:justify-center lg:gap-40 md:gap-20 md:gap-14 gap-4 items-center justify-start transition ease-out duration-700">
+                @foreach (var member in Model.Items)
+                {
+                <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                    <div class="m-auto">
+                        <img src="@Cofoundry.Routing.ImageAsset(member.Photo)" class="rounded-full w-36 grayscale ease-in-out hover:sepia block m-auto" />
+                        <div class="grid text-center">
+                            <span class="pt-2 font-lighter leading-relaxed tracking-wider font-sans text-sm">Meet @member.Name, @member.JobTitle</span>
+                            <span class="pt-2 font-lighter leading-relaxed tracking-wider font-sans text-sm">@member.Location</span>
+                        </div>
+                    </div>
+
+                </div>
+                }
+                </div>
+        </div>
+        <button aria-label="slide forward" class="absolute z-30 right-0 mr-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
+            <svg class="dark:text-gray-900" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+    </div>
+</div>
+
+
+<!--mobile-->
+    <div class="swiper mySwiper visible lg:hidden md:hidden py-8">
+      <div class="swiper-wrapper">
+          @foreach (var member in Model.Items)
+                {
+        <div class="swiper-slide sm:w-auto w-36">
+               <div class="mx-24  ">
+                        <img src="@Cofoundry.Routing.ImageAsset(member.Photo)" class="rounded-full w-36 grayscale ease-in-out hover:sepia block " />
+                        <div class="grid text-center">
+                            <span class="pt-2 font-lighter leading-relaxed tracking-wider font-sans text-sm">Meet @member.Name, @member.JobTitle</span>
+                            <span class="pt-2 font-lighter leading-relaxed tracking-wider font-sans text-sm">@member.Location</span>
+                        </div>
+                    </div>
+        </div>
+                }
+      </div>
+      <div class="swiper-button-next text-black"></div>
+      <div class="swiper-button-prev text-black h-12"></div>
+    </div>
+
+<script>
+    let defaultTransform = 0;
+    function goNext() {
+        defaultTransform = defaultTransform - 398;
+        var slider = document.getElementById("slider");
+        if (Math.abs(defaultTransform) >= slider.scrollWidth / 1.7) defaultTransform = 0;
+        slider.style.transform = "translateX(" + defaultTransform + "px)";
+    }
+    next.addEventListener("click", goNext);
+    function goPrev() {
+        var slider = document.getElementById("slider");
+        if (Math.abs(defaultTransform) === 0) defaultTransform = 0;
+        else defaultTransform = defaultTransform + 398;
+        slider.style.transform = "translateX(" + defaultTransform + "px)";
+    }
+    prev.addEventListener("click", goPrev);
+
+</script>
+   <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+
+      <style>
+
+
+  
+      .swiper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>

@@ -1,0 +1,104 @@
+﻿@using Cofoundry.Web
+@model oceanfanatics.Cofoundry.PageBlockTypes.Carousel.CarouselDisplayModel
+@inject ICofoundryBlockTypeHelper<oceanfanatics.Cofoundry.PageBlockTypes.Carousel.CarouselDisplayModel> Cofoundry
+
+<div id="carouselExampleCaptions" class="carousel slide relative overflow-hidden" data-bs-ride="carousel">
+    <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+        @foreach (var slide in Model.Slides)
+        {
+            <button type="button"
+                    data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide-to="0"
+                    class="active"
+                    aria-current="true"
+                    aria-label="Slide 1"></button>
+            @*<button type="button"
+                    data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            <button type="button"
+                    data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>*@
+        }
+
+    </div>
+    <div class="carousel-inner relative w-full overflow-hidden">
+        @for (int i = 0; i < Model.Slides.Count; i++)
+        {
+            if (i == 0)
+            {
+                <div class="carousel-item active relative float-left w-full">
+                    <img src="@Cofoundry.Routing.ImageAsset(Model.Slides.ToArray()[i].Image)"
+                         class="block w-full"
+                         alt="..." />
+                    <div id="carousel-caption" class="w-100 bottom-0 md:block absolute bg-blue bg-opacity-25 " >
+                        <div class="md-lg:w-75   py-4 lg:py-16 px-4 text-white">
+                            @if (Model.Slides.ToArray()[i].Link != null)
+                            {
+                                <div class="mt-8">
+                                    <a href="@Model.Slides.ToArray()[i].Link" class="text-3xl">
+
+                                        <span aria-hidden="true" class="text-3xl">→</span>
+                                    </a>
+                                </div>
+                            }
+
+                            <h2 class="lg:text-4xl md:text-3xl text-xl max-w-xl  leading-tight" >@Model.Slides.ToArray()[i].Title</h2>
+                            <h5 class="lg:text-sm md:text-sm text-xs font-semibold mb-2 md:mb-4 tracking-wider">@Model.Slides.ToArray()[i].Text</h5>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="carousel-item  relative float-left w-full">
+                    <img src="@Cofoundry.Routing.ImageAsset(Model.Slides.ToArray()[i].Image)"
+                         class="block w-full"
+                         alt="..." />
+                 
+                   <div id="carousel-caption" class="w-100 bottom-2 md:block absolute bg-blue bg-opacity-25 " style="--tw-bg-opacity: .10" >
+                        <div class=" w-75  py-8 lg:py-16 px-4 text-white">
+                        @if (Model.Slides.ToArray()[i].Link != null)
+                        {
+                            <div class="mt-8">
+                                <a href="@Model.Slides.ToArray()[i].Link" class="bg-black bg-opacity-50 rounded-lg rounded-lg hover:border-black hover:text-black ">
+
+                                    <span aria-hidden="true" class="text-3xl">→</span>
+                                </a>
+                            </div>
+                        }
+
+                    <h2 class="md-lg:text-5xl text-2xl font-bold max-w-xl leading-normal md:leading-tight">@Model.Slides.ToArray()[i].Title</h2>
+                    <h5 class="md:text-xl text-sm font-semibold mb-2 md:mb-4 tracking-wider">@Model.Slides.ToArray()[i].Text</h5>
+                </div>
+                    </div>
+                </div>
+            }
+
+        }
+
+
+    </div>
+    @*<button class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+        <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+
+    </button>
+    <button class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+        <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+
+    </button>*@
+</div>
+
+<style>
+    #carousel-caption{
+        bottom:5px;
+       color:#fff
+    }
+</style>

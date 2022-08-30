@@ -1,0 +1,71 @@
+﻿@using Cofoundry.Web
+
+@model oceanfanatics.Cofoundry.PageBlockTypes.HeroWithText.HeroWithTextDisplayModel
+@inject ICofoundryBlockTypeHelper<oceanfanatics.Cofoundry.PageBlockTypes.HeroWithText.HeroWithTextDisplayModel> Cofoundry
+
+@{
+    Cofoundry.BlockType.UseDisplayName("Destination with full width image");
+    Layout = null;
+}
+
+@if (Model.Hero)
+{
+    <div class="relative center">
+        <img src="@Cofoundry.Routing.ImageAsset(Model.Image)" class="w-full h-full" />
+        <div class="pb-lg-5 text-center px-1 py-2 absolute bottom-1 text-sm text-prose font-light text-white w-100 bg-opacity-25 bg-gradient-to-t from-black">
+            <div class="mb-3">
+                <span class="md:text-3xl text-xl font-semibold antialiased leading-relaxed">@Model.Title</span>
+                <br />
+                <span class="mb-4 leading-relaxed text-prose antialiased text-base ">@Model.SubTitle</span>
+                <br />
+            </div>
+
+            @if (Model.Link != null)
+            {
+                <a href="@Model.Link" class="animate-pulse border-2 rounded-full w-50 border-white  hover:text-black hover:bg-white align-middle hover:no-underline hover:text-black  md:text-3xl text-xl items-center pl-3 pr-3 font-semibold">
+                    Take Part
+
+                </a>
+
+            }
+            <span class="hero container max-w-screen-lg mx-auto md:pt-10 pt-4  flex">
+                <img src="~/images/OF logo white.png" class="md:h-6 h-4 mx-auto" />
+            </span>
+
+        </div>
+
+
+    </div>
+
+}
+else
+{
+    <div class="relative center h-60">
+        <img src="@Cofoundry.Routing.ImageAsset(Model.Image)" class="w-full h-full grayscale" />
+        <div class="pb-lg-5 text-center absolute bottom-1 text-sm text-prose font-light text-white w-100 bg-gradient-to-t from-black bg-opacity-10">
+
+
+            @if (Model.Link != null)
+            {
+                <span class="hero container max-w-screen-lg mx-auto pt-10 flex">
+                    <img src="~/images/arrow white.png" class="h-6 mx-auto mb-3" />
+                </span>
+                <a href="@Model.Link" class="animate-pulse border-2 rounded-full w-50 border-white  hover:text-black hover:bg-white align-middle hover:no-underline hover:text-black  text-3xl items-center pl-3 pr-3 font-semibold">
+                    Take Part
+
+                </a>
+
+            }
+            <div class="text-emerald-400 mt-4">
+                <span class="text-base  antialiased font-semibold leading-tight">@Model.Title</span>
+                <br />
+                <span class="leading-tight font-semibold text-prose antialiased text-base ">@Model.SubTitle</span>
+                <br />
+            </div>
+
+        </div>
+
+
+    </div>
+
+}

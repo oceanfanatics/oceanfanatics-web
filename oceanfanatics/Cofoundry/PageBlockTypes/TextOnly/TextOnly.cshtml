@@ -1,0 +1,16 @@
+﻿@using Cofoundry.Web
+
+@model oceanfanatics.Cofoundry.PageBlockTypes.TextOnly.TextOnlyDisplayModel
+@inject ICofoundryBlockTypeHelper<oceanfanatics.Cofoundry.PageBlockTypes.TextOnly.TextOnlyDisplayModel> Cofoundry
+
+@{
+    Cofoundry.BlockType.UseDisplayName("Text Only");
+    Layout = null;
+}
+
+<div>
+    <div class="grid">
+        <span class="js-show-on-scroll pt-2 font-medium leading-relaxed tracking-wider font-sans text-sm">@Model.Title</span>
+        <span class="js-show-on-scroll pt-2 font-lighter leading-relaxed tracking-wider font-sans text-xs">@Model.Description</span>
+    </div>
+</div>

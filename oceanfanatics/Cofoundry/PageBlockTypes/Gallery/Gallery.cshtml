@@ -1,0 +1,111 @@
+﻿@using Cofoundry.Web
+@model oceanfanatics.Cofoundry.PageBlockTypes.Gallery.GalleryDisplayModel
+@inject ICofoundryBlockTypeHelper<oceanfanatics.Cofoundry.PageBlockTypes.Gallery.GalleryDisplayModel> Cofoundry
+
+    <div style="text-align: -webkit-center">
+        <!-- large image on slides -->
+        @for (var i = 0; i < Model.Photos.Count; i++)
+        {
+            <div class="mySlides hidden">
+                <div class="w-full object-cover">
+                    <img class="w-max  md:max-w-2xl lg:max-w-2xl px-4" src="@Cofoundry.Routing.ImageAsset(Model.Photos.ToArray()[i].Image)" />
+                                                    
+                </div>
+            </div>
+        }
+    </div>
+        <div class="flex items-start justify-center w-full pb-2 pt-10  lg:py-8 lg:px-32 px-8">
+            <div class="w-full relative flex items-center justify-center">
+                <button aria-label="slide backward" class="absolute z-30 left-0 ml-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
+                    <svg class="dark:text-gray-900" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div class="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
+                    <div id="slider" class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700 lg:justify-center">
+                         @for (var i = 0; i < Model.Photos.Count; i++)
+                                        {
+                        <div class="flex shrink-0 relative w-max h-24  sm:w-auto">
+                            <img src="@Cofoundry.Routing.ImageAsset(Model.Photos.ToArray()[i].Image)" data-sliderid="@i" id="@i" alt="black chair and white table" class="imgslider object-cover object-center w-full opacity-50 hover:opacity-100 focus:opacity-100 cursor-pointer" />
+                           
+                        </div>
+                        
+                                        }
+                    </div>
+                </div>
+                <button aria-label="slide forward" class="absolute z-30 right-0 mr-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
+                    <svg class="dark:text-gray-900" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+      
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+let defaultTransform = 0;
+function goNext() {
+   //console.log("next")
+    defaultTransform = defaultTransform - 398;
+    var slider = document.getElementById("slider");
+    if (Math.abs(defaultTransform) >= slider.scrollWidth / 1.7) defaultTransform = 0;
+    slider.style.transform = "translateX(" + defaultTransform + "px)";
+    //console.log(defaultTransform)
+}
+next.addEventListener("click", goNext);
+function goPrev() {
+    //console.log(defaultTransform)
+    var slider = document.getElementById("slider");
+    if (Math.abs(defaultTransform) === 0) defaultTransform = 0;
+    else defaultTransform = defaultTransform + 398;
+    slider.style.transform = "translateX(" + defaultTransform + "px)";
+    //console.log(defaultTransform)
+}
+prev.addEventListener("click", goPrev);
+
+    </script>
+    <script>
+    //JS to switch slides and replace text in bar//
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        console.log($(this))
+        showSlides(slideIndex = n);
+    }
+
+    $(".imgslider").on('click', function(){
+        var sliderid = $(this).data('sliderid');
+        $('.imgslider').removeClass('opacity-100')
+        $(`#${sliderid}`).addClass('opacity-100');
+        sliderid += 1;
+        showSlides(slideIndex = sliderid);
+    });
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        //var dots = document.getElementsByClassName("description");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        //for (i = 0; i < dots.length; i++) {
+        //    dots[i].className = dots[i].className.replace(" opacity-100", "");
+        //}
+        slides[slideIndex - 1].style.display = "block";
+        //dots[slideIndex - 1].className += " opacity-100";
+       // captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+</script>

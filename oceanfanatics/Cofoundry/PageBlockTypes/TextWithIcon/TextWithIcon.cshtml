@@ -1,0 +1,17 @@
+﻿@using Cofoundry.Web
+
+@model oceanfanatics.Cofoundry.PageBlockTypes.TextWithIcon.TextWithIconDisplayModel
+@inject ICofoundryBlockTypeHelper<oceanfanatics.Cofoundry.PageBlockTypes.TextWithIcon.TextWithIconDisplayModel> Cofoundry
+
+@{
+    Cofoundry.BlockType.UseDisplayName("Text with icon");
+    Layout = null;
+}
+
+<div class="content hidden">
+    <div class="grid js-show-on-scroll">
+        <img class="h-14 transform hover:translate-x-3 transition duration-300" src="@Cofoundry.Routing.ImageAsset(Model.ImageId)" />
+        <span class="pt-2 font-medium leading-relaxed tracking-wider font-sans text-sm">@Model.Title</span>
+        <span class="pt-2 font-lighter leading-relaxed tracking-wider font-sans text-xs">@Model.Description.ToString()</span>
+    </div>
+</div>

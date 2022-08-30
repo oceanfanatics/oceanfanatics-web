@@ -1,0 +1,45 @@
+﻿@using Cofoundry.Web
+
+@model oceanfanatics.Cofoundry.PageBlockTypes.ImageAndText.ImageAndTextDisplayModel
+@inject ICofoundryBlockTypeHelper<oceanfanatics.Cofoundry.PageBlockTypes.ImageAndText.ImageAndTextDisplayModel> Cofoundry
+
+@{
+    Cofoundry.BlockType.UseDisplayName("Image with text");
+    Layout = null;
+}
+
+<div class="js-show-on-scroll grid grid-cols-1 gap-10 px-4 my-10">
+
+        <div class="transition ease-in-out delay-150    duration-300">
+            <div class="inline-block overflow-hidden">
+                <img src="@Cofoundry.Routing.ImageAsset(Model.Image)" class=" w-full hover:-translate-y-1 hover:scale-110 block" />
+            </div>
+            
+            <div class="grid">
+                <span class="pt-2 font-medium text-prose font-sans text-sm">@Model.Title</span>
+                <span class="pt-2 font-lighter text-prose font-sans text-xs">@Model.Description</span>
+             <div class="flex">
+                @foreach(var l in @Model.Link)
+            {
+               
+                    <div>
+                         <a class="pt-2 font-lighter text-prose font-sans text-xs inline-flex" href="@l.Link">@l.LinkName
+                   @* <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>*@</a>
+                        </div>
+                 
+
+                @if(Model.Link.Count > 1 && l != @Model.Link.Last())
+                {
+                    <div class="pt-2 font-lighter text-prose font-sans text-xs inline-flex">/</div>
+                }
+               
+            }
+           </div>
+            </div>
+
+        </div>
+    
+</div>

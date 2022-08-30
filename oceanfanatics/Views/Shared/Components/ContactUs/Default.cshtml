@@ -1,0 +1,58 @@
+﻿@model oceanfanatics.Models.Contact
+
+@{
+    Layout = null;
+}
+
+
+
+<div>
+    <div class="flex ">
+        <div class="w-full mb-4">
+            <div class="flex">
+                <input name="@Model.Name" class="w-full  pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Name">
+            </div>
+        </div>
+    </div>
+    <div class="flex ">
+        <div class="w-1/2  mb-4">
+            <div class="flex  pr-3">
+                <input name="@Model.ContactNumber" type="text" class="w-full  pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Contact Number">
+            </div>
+        </div>
+        <div class="w-1/2  mb-4">
+            <div class="flex">
+                <input type="email" name="@Model.EmailAddress" class="w-full  pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Email">
+            </div>
+        </div>
+    </div>
+
+    <div class="flex ">
+        <div class="w-full  mb-12">
+            <div class="flex">
+                <textarea placeholder="Message" name="@Model.Message" class="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="flex">
+        <div class="w-full  mb-2">
+            <button class="block w-full mx-auto bg-blue hover:bg-darkblue pl-10 focus:bg-darkblue text-white rounded-lg px-3 py-3 font-semibold" id="sendbtn">SEND</button>
+        </div>
+    </div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $("#sendbtn").on('click', function(){
+            
+    Swal.fire({
+    position: 'top-end',
+  title: 'Thank you for contacting us',
+  showConfirmButton: false,
+  timerProgressBar: true,
+  timer: 1500
+})
+    });
+
+</script>

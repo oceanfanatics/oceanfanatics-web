@@ -1,0 +1,13 @@
+﻿@using Cofoundry.Web
+
+@model oceanfanatics.Cofoundry.PageBlockTypes.LogoOnly.LogoOnlyDisplayModel
+@inject ICofoundryBlockTypeHelper<oceanfanatics.Cofoundry.PageBlockTypes.LogoOnly.LogoOnlyDisplayModel> Cofoundry
+
+@{
+    Cofoundry.BlockType.UseDisplayName("Destination with  image");
+    Layout = null;
+}
+
+<div class="flex">
+    <img src="@Cofoundry.Routing.ImageAsset(Model.ImageId)" class="lg:h-26 md:h-20 h-14 w-auto m-auto pl-3" />
+</div>

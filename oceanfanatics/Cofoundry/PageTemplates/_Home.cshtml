@@ -1,0 +1,61 @@
+﻿@model IPageViewModel
+@inject ICofoundryTemplateHelper<IPageViewModel> Cofoundry
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@(await Cofoundry.Template.Region("Carousel").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.Carousel.CarouselDataModel>().InvokeAsync())
+
+<div class="max-w-9xl mx-auto" id="recent">
+    <div class="text-prose tracking-widest text-center mb-5 mt-5 px-2 grid grid-cols-1" id="about">
+        <span class="font-semibold text-prose mt-2 font-sans text-xl md:text-2xl text-center mb-1">@(await Cofoundry.Template.Region("Main Title").AllowBlockType<PlainTextDataModel>().InvokeAsync())</span>
+        <span class="font-light text-xs md:text-sm font-sans mb-4 ">@(await Cofoundry.Template.Region("Para").AllowBlockType<PlainTextDataModel>().InvokeAsync())</span>
+    </div>
+    <div class="text-center  flex">
+        <div class="m-auto align-items-center justify-content-center pb-5 mb-5 grid md:grid-flow-col auto-cols-max  gap-5 md:divide-x text-center overflow-x-hidden">
+
+            @(await Cofoundry.Template.Region("Logo-Destination").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.LogoOnly.LogoOnlyDataModel>().AllowMultipleBlocks().InvokeAsync())
+
+        </div>
+    </div>
+
+    <div class="w-100 grid grid-cols-1 md:grid-cols-3">
+        @(await Cofoundry.Template.Region("Destination-Image").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.DestinationWIthImage.DestinationWithImageDataModel>().AllowMultipleBlocks().InvokeAsync())
+    </div>
+
+    <div class="w-100 grid grid-cols-1">
+        @(await Cofoundry.Template.Region("Destination-FullWidth-Image").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.DestinationW100Image.DestinationW100DataModel>().InvokeAsync())
+    </div>
+
+    <div class="w-full pb-4">
+        <h2 class="font-semibold text-prose mt-2 font-sans text-xl text-center py-4">Recent Highlights</h2>
+        @await Component.InvokeAsync("Highlights")
+    </div>
+    <div class="w-full  mt-4 pb-4" style="background-color:#EDE8E1">
+        <h2 class="font-semibold text-prose mt-2 font-sans text-xl text-center py-4">Working with</h2>
+        <div class="m-auto align-items-center justify-content-center pb-4 mt-4 grid md:grid-flow-col auto-cols-max  gap-5 md:divide-x text-center ">
+
+            @(await Cofoundry.Template.Region("Logo-Partner").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.LogoOnly.LogoOnlyDataModel>().AllowMultipleBlocks().InvokeAsync())
+
+        </div>
+    </div>
+    <div class="w-full pb-4 bg-blue bg-opacity-80 text-white" id="initiatives">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 px-4 py-10">
+            @(await Cofoundry.Template.Region("Texts").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.TextOnly.TextOnlyDataModel>().AllowMultipleBlocks().InvokeAsync())
+        </div>
+    </div>
+    <div class="w-full pb-4" id="team">
+        @await Component.InvokeAsync("Team", new { destination = "home" })
+
+    </div>
+    <div class="grid justify-items-center w-100" id="contact" style="background-color:#EDE8E1">
+        <div class="mx-5 py-6 max-w-xs md:max-w-6xl">
+            <h2 class="font-semibold text-prose mt-2 font-sans text-xl text-center py-4">Contact Us</h2>
+            @await Component.InvokeAsync("ContactUs", new { destination = "General" })
+        </div>
+        
+    </div>
+
+  
+
+</div>

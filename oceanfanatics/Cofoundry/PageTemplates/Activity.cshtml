@@ -1,0 +1,65 @@
+﻿@model IPageViewModel
+@inject ICofoundryTemplateHelper<IPageViewModel> Cofoundry
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section>
+      <div class="grid grid-flow-row-dense grid-cols-1 lg:grid-cols-3">
+    <div class="md:col-span-2 py-8 ">
+        
+ @(await Cofoundry.Template.Region("photos").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.Gallery.GalleryDataModel>().AllowMultipleBlocks().InvokeAsync())
+
+    </div>
+    <div>
+      <div class="pt-10 px-8 ">
+           <div class=" text-black-50 font-semibold">@(await Cofoundry.Template.Region("text-title").AllowBlockType<RichTextDataModel>().AllowMultipleBlocks().InvokeAsync())</div>
+        <div class="js-show-on-scroll text-black font-weight-bold text-xl">@(await Cofoundry.Template.Region("text-sub-title").AllowBlockType<RichTextDataModel>().AllowMultipleBlocks().InvokeAsync())</div>
+        <div class="js-show-on-scroll mt-6 text-sm">@(await Cofoundry.Template.Region("text").AllowBlockType<RichTextDataModel>().AllowMultipleBlocks().InvokeAsync())</div>
+            <div class="mt-2">
+                <a href="/contact-us" class="js-show-on-scroll mt-20 animate-pulse border-2 rounded-full w-50 text-white border-raiy bg-danger hover:text-black hover:bg-white align-middle hover:no-underline hover:text-black  text-sm items-center pl-3 pr-3 font-semibold">
+                                Inquire
+
+                            </a>
+            </div>
+                        
+      </div>
+                          
+                         
+    </div>
+</div>
+    <div class="border border-black-50 m-4">
+        <div class="px-4 pt-2">
+               <div class="js-show-on-scroll text-black-50 font-semibold">@(await Cofoundry.Template.Region("about-title").AllowBlockType<RichTextDataModel>().AllowMultipleBlocks().InvokeAsync())</div>
+                                    <div class=" text-black font-weight-bold text-xl">@(await Cofoundry.Template.Region("about-sub-title").AllowBlockType<RichTextDataModel>().AllowMultipleBlocks().InvokeAsync())</div>
+        </div>
+                
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-10 px-4 py-10 pt-2">
+            @(await Cofoundry.Template.Region("about").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.TextOnly.TextOnlyDataModel>().AllowMultipleBlocks().InvokeAsync())
+        </div>
+    </div>
+    <div class="js-show-on-scroll w-100 mx-auto " style="text-align:-webkit-center; background-color:#EDE8E1">
+    <div class="w-50 text-prose tracking-widest text-center mb-4 mt-4 grid grid-cols-1" >
+        <span class="font-light text-xs font-sans mt-4 ">Reviews</span>
+        <span class="font-semibold text-prose mt-2 font-sans text-xl text-center mb-1">@(await Cofoundry.Template.Region("Review-Title").AllowBlockType<PlainTextDataModel>().InvokeAsync())</span>
+        <span class="text-center rounded-full w-12 mt-2 justify-self-center">@(await Cofoundry.Template.Region("Review-image").AllowBlockType<ImageDataModel>().InvokeAsync())</span>
+        <span class="font-light text-xs font-sans mt-2 mb-4 ">@(await Cofoundry.Template.Region("Review-subtext").AllowBlockType<PlainTextDataModel>().InvokeAsync())</span>
+    </div>
+</div>
+ <div class="w-full">
+        <h2 class="font-semibold text-prose mt-2 font-sans text-xl text-center py-4">Other Activities</h2>
+        @await Component.InvokeAsync("Highlights")
+    </div>
+
+    <div class="js-show-on-scroll w-100 mx-auto bg-alhi" style="text-align:-webkit-center; background-color:#EDE8E1">
+    <div class="w-50 text-prose tracking-widest text-center mb-4 mt-4 grid grid-cols-1" >
+        <div class="font-light text-xs   font-sans mt-2 mt-4 mb-4 ">@(await Cofoundry.Template.Region("IG-hashtag").AllowBlockType<PlainTextDataModel>().InvokeAsync())</div>
+
+                <div class="m-auto align-items-center justify-content-center w-48 md:w-96 mt-2 pb-4 mb-4 gap-4 grid md:grid-flow-col    md:divide-x text-center ">
+                     @(await Cofoundry.Template.Region("IG-image").AllowBlockType<ImageDataModel>().AllowMultipleBlocks().InvokeAsync())</div>
+               
+                </div>
+    </div>
+
+</section>
+
+

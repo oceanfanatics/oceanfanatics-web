@@ -1,0 +1,39 @@
+﻿@model IPageViewModel
+@inject ICofoundryTemplateHelper<IPageViewModel> Cofoundry
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@(await Cofoundry.Template.Region("Hero").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.HeroWithText.HeroWithTextDataModel>().InvokeAsync())
+
+<div class="js-show-on-scroll w-100 grid grid-cols-1 md:grid-cols-3">
+    @(await Cofoundry.Template.Region("A").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.ImageAndText.ImageAndTextDataModel>().AllowMultipleBlocks().InvokeAsync())
+</div>
+
+<div class="js-show-on-scroll  w-100 grid grid-cols-1">
+    @(await Cofoundry.Template.Region("Destination-FullWidth-Image").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.DestinationW100Image.DestinationW100DataModel>().InvokeAsync())
+</div>
+
+<div class="js-show-on-scroll w-100 grid grid-cols-1 md:grid-cols-3">
+    @(await Cofoundry.Template.Region("B").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.ImageAndText.ImageAndTextDataModel>().AllowMultipleBlocks().InvokeAsync())
+</div>
+
+<div class="js-show-on-scroll w-100 mx-auto bg-alhi" style="text-align:-webkit-center; background-color:#EDE8E1">
+<div class="w-50 text-prose tracking-widest text-center mb-4 mt-4 grid grid-cols-1" >
+    <div class="font-light text-xs   font-sans mt-2 mt-4 mb-4 ">@(await Cofoundry.Template.Region("IG-hashtag").AllowBlockType<PlainTextDataModel>().InvokeAsync())</div>
+
+            <div class="m-auto align-items-center justify-content-center w-48 h-full md:w-96 mt-2 pb-4 mb-4 gap-4 grid md:grid-flow-col    md:divide-x text-center ">
+                    @(await Cofoundry.Template.Region("IG-image").AllowBlockType<ImageDataModel>().AllowMultipleBlocks().InvokeAsync())</div>
+               
+            </div>
+
+        <span class="font-semibold text-prose mt-2 font-sans text-xl text-center mb-1">@(await Cofoundry.Template.Region("Review-Title").AllowBlockType<PlainTextDataModel>().InvokeAsync())</span>
+              <div class="mt-2">
+                  @(await Cofoundry.Template.Region("downloadlink").AllowBlockType<DocumentDataModel>().InvokeAsync())
+               @* <a href="@(await Cofoundry.Template.Region("downloadlink").AllowBlockType<DocumentDataModel>().InvokeAsync())" class="js-show-on-scroll mt-20 animate-pulse border-2 rounded-full w-50 text-white border-darkblue bg-darkblue hover:text-black hover:bg-white align-middle hover:no-underline hover:text-black  text-sm items-center pl-3 pr-3 font-semibold">
+                                @(await Cofoundry.Template.Region("Download-Title").AllowBlockType<PlainTextDataModel>().InvokeAsync())
+
+                            </a>*@
+            </div>
+        <span class="font-light text-xs font-sans mt-2 mb-4 ">@(await Cofoundry.Template.Region("Review-subtext").AllowBlockType<PlainTextDataModel>().InvokeAsync())</span>
+</div>

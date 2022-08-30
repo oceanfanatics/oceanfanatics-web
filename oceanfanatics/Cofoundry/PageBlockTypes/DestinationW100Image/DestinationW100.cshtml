@@ -1,0 +1,43 @@
+﻿@using Cofoundry.Web
+
+@model oceanfanatics.Cofoundry.PageBlockTypes.DestinationW100Image.DestinationW100DisplayModel
+@inject ICofoundryBlockTypeHelper<oceanfanatics.Cofoundry.PageBlockTypes.DestinationW100Image.DestinationW100DisplayModel> Cofoundry
+
+@{
+    Cofoundry.BlockType.UseDisplayName("Destination with full width image");
+    Layout = null;
+}
+    <div class="relative center h-max ">
+        <div class="overflow-hidden inline-block">
+             <img src="@Cofoundry.Routing.ImageAsset(Model.Image)" class="transition ease-in-out delay-150 bg-blue-500 block hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 w-full h-40 md:h-full" />
+       
+        </div>
+        <div class="pl-3 pb-3 px-1 py-2 absolute bottom-0 text-sm text-prose font-light text-white w-100  bg-opacity-25 bg-gradient-to-t from-black">
+            @if (Model.Event)
+            {
+                <a href="@Model.Link" class="border-2 rounded-full w-50 border-white  hover:text-black hover:bg-white align-middle hover:no-underline hover:text-black   text-base items-center pl-3 pr-3 mb-4 font-semibold">
+                    Take Part
+
+                </a>
+                <br />
+            }
+            <br />
+            <span class="font-semibold">@Model.Title</span>
+            <br />
+            <span>@Model.SubTitle</span>
+            <br />
+            @if (Model.Link != null && !Model.Event)
+            {
+                <a href="@Model.Link" class="hover:text-white text-xs md:text-sm inline-flex items-center">
+                    View More
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                         class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            }
+
+        </div>
+       
+
+    </div>

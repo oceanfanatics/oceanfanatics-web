@@ -1,0 +1,67 @@
+﻿@model IPageViewModel
+@inject ICofoundryTemplateHelper<IPageViewModel> Cofoundry
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@(await Cofoundry.Template.Region("Carousel").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.Carousel.CarouselDataModel>().InvokeAsync())
+
+<div class="js-show-on-scroll pt-4 w-100 mx-auto" style="text-align:-webkit-center">
+    <div class="w-50 text-prose tracking-widest text-center mb-4 mt-4 grid grid-cols-1" id="about">
+        <span class="text-center rounded-full w-12 justify-self-center">@(await Cofoundry.Template.Region("Review-image").AllowBlockType<ImageDataModel>().InvokeAsync())</span>
+        <span class="font-semibold text-prose mt-2 font-sans text-xl text-center mb-1">@(await Cofoundry.Template.Region("Review-Title").AllowBlockType<PlainTextDataModel>().InvokeAsync())</span>
+        <span class="font-light text-xs font-sans mb-4 ">@(await Cofoundry.Template.Region("Review-subtext").AllowBlockType<PlainTextDataModel>().InvokeAsync())</span>
+    </div>
+</div>
+
+<div class="js-show-on-scroll w-100 grid grid-cols-1">
+    @(await Cofoundry.Template.Region("Destination-FullWidth-Image").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.DestinationW100Image.DestinationW100DataModel>().InvokeAsync())
+</div>
+
+<div class="js-show-on-scroll w-100 grid grid-cols-1 md:grid-cols-3">
+    @(await Cofoundry.Template.Region("Destination-Image").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.DestinationWIthImage.DestinationWithImageDataModel>().AllowMultipleBlocks().InvokeAsync())
+</div>
+
+
+<div class="js-show-on-scroll w-full  bg-opacity-80 " id="initiatives">
+    <div class="grid md:grid-cols-3  gap-10 px-4 py-10">
+        @(await Cofoundry.Template.Region("Text-With-Icon").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.TextWithIcon.TextWithIconDataModel>().AllowMultipleBlocks().InvokeAsync())
+
+
+    </div>
+    <div class="js-show-on-scroll text-center  mb-5">
+        <a href="#" class="text-center font-semibold leading-tight animate-pulse" id="load" >More Activities</a>
+    </div>
+
+</div>
+
+
+
+
+<div class="w-full  pb-4" style="background-color:#EDE8E1" id="team">
+    @await Component.InvokeAsync("Team", new { destination = Model.PageRoutingHelper.CurrentPageRoute.UrlPath})
+
+</div>
+
+
+<div class="w-full pb-4">
+    <h2 class="font-semibold text-prose mt-2 font-sans text-xl text-center py-4">Recent Highlights</h2>
+    @await Component.InvokeAsync("Highlights")
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $(function(){
+    
+    $(".content").slice(0, 6).show(); // select the first ten
+    $("#load").click(function(e){ // click event for load more
+        e.preventDefault();
+        $(".content:hidden").slice(0, 3).show(); // select next 10 hidden divs and show them
+        if($(".content:hidden").length == 0){ // check if any hidden divs still exist
+           // alert("No more divs"); // alert if there are none left
+        }
+    });
+});
+if($(".content").length <= 6){
+       $("#load").addClass("hidden");
+    };
+</script>

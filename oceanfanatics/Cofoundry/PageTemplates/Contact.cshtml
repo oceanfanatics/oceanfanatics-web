@@ -1,0 +1,12 @@
+﻿@model IPageViewModel
+@inject ICofoundryTemplateHelper<IPageViewModel> Cofoundry
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ <div class="grid justify-items-center w-100" id="contact" style="background-color:#EDE8E1">
+        <div class="mx-5 py-6 max-w-xs md:max-w-6xl">
+            <h2 class="font-semibold text-prose mt-2 font-sans text-xl text-center py-4">Contact Us</h2>
+            @await Component.InvokeAsync("ContactUs", new { destination = "General" })
+        </div>
+        
+    </div>
