@@ -10,5 +10,6 @@ namespace oceanfanatics.Cofoundry.PageBlockTypes.LogoOnly
     {
         [Image]
         public int ImageId { get; set; }
+        public string Link { get; set; }
     }
 }

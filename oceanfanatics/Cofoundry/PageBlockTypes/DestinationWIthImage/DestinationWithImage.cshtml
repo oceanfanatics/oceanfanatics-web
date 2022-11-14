@@ -10,8 +10,8 @@
 }
 
 <div class="relative center transition ease-in-out delay-150 bg-blue-500  hover:bg-indigo-500 duration-300">
-    <div class="inline-block overflow-hidden">
-        <img src="@Cofoundry.Routing.ImageAsset(Model.ImageId)" class="w-full  hover:-translate-y-1 hover:scale-110 block h-full" />
+    <div class="inline-block overflow-hidden h-full w-full">
+        <img src="@Cofoundry.Routing.ImageAsset(Model.ImageId)" class="  hover:-translate-y-1 hover:scale-110 block object-fill" style="width:inherit; height:inherit"/>
     
     </div>
     @if (Model.IsEvent)

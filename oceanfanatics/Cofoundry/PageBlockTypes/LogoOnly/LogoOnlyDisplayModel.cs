@@ -9,5 +9,6 @@ namespace oceanfanatics.Cofoundry.PageBlockTypes.LogoOnly
     public class LogoOnlyDisplayModel : IPageBlockTypeDisplayModel
     {
         public ImageAssetRenderDetails ImageId { get; set; }
+        public string Link { get; set; }
     }
 }

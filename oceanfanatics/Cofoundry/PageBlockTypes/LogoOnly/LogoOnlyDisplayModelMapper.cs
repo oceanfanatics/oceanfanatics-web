@@ -28,6 +28,7 @@ namespace oceanfanatics.Cofoundry.PageBlockTypes.LogoOnly
                 var output = new LogoOnlyDisplayModel()
                 {
                     ImageId = image,
+                    Link = input.DataModel.Link
                 };
                 result.Add(input, output);
             }
