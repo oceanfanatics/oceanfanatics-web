@@ -6,8 +6,8 @@
 
 @(await Cofoundry.Template.Region("Carousel").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.Carousel.CarouselDataModel>().InvokeAsync())
 
-<div class="max-w-9xl mx-auto" id="recent">
-    <div class="text-prose tracking-widest text-center mb-5 mt-5 px-2 grid grid-cols-1" id="about">
+<div class="max-w-9xl mx-auto" id="about">
+    <div class="text-prose tracking-widest text-center mb-5 mt-5 px-2 grid grid-cols-1">
         <span class="font-semibold text-prose mt-2 font-sans text-xl md:text-2xl text-center mb-1">@(await Cofoundry.Template.Region("Main Title").AllowBlockType<PlainTextDataModel>().InvokeAsync())</span>
         <span class="font-light text-xs md:text-sm font-sans mb-4 ">@(await Cofoundry.Template.Region("Para").AllowBlockType<PlainTextDataModel>().InvokeAsync())</span>
     </div>
@@ -27,7 +27,7 @@
         @(await Cofoundry.Template.Region("Destination-FullWidth-Image").AllowBlockType<oceanfanatics.Cofoundry.PageBlockTypes.DestinationW100Image.DestinationW100DataModel>().InvokeAsync())
     </div>
 
-    <div class="w-full pb-4">
+    <div class="w-full pb-4" id="recent">
         <h2 class="font-semibold text-prose mt-2 font-sans text-xl text-center py-4">Recent Highlights</h2>
         @await Component.InvokeAsync("Highlights")
     </div>
