@@ -17,15 +17,15 @@
             <div id="slider" class="h-full flex md:justify-center lg:gap-40 md:gap-20 md:gap-14 gap-4 items-center justify-start transition ease-out duration-700">
                 @foreach (var member in Model.Items.OrderBy(x=>Guid.NewGuid()).Take(3))
                 {
-                <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                    <div class="m-auto w-36 h-36">
-                        <img src="@Cofoundry.Routing.ImageAsset(member.Photo)" class="rounded-full w-36 grayscale ease-in-out hover:sepia block m-auto" style="width:inherit; height:inherit"/>
-                        <div class="grid text-center">
-                            <span class="pt-2 font-lighter leading-relaxed tracking-wider font-sans text-sm">Meet @member.Name, @member.JobTitle</span>
-                            <span class="pt-2 font-lighter leading-relaxed tracking-wider font-sans text-sm">@member.Location</span>
-                        </div>
-                    </div>
+                <div class="grid flex-shrink-0 relative w-full sm:w-auto ">
+                    <div class="m-auto w-36 h-36" >
+                        <img src="@Cofoundry.Routing.ImageAsset(member.Photo)" class="rounded-full grayscale ease-in-out hover:sepia block m-auto object-cover" style="width:inherit; height:inherit"/>
 
+                    </div>
+                    <div class="grid text-center">
+                        <span class="pt-2 font-lighter leading-relaxed tracking-wider font-sans text-sm">@member.Name, @member.JobTitle</span>
+                        <span class="pt-2 font-lighter leading-relaxed tracking-wider font-sans text-sm">@member.Location</span>
+                    </div>
                 </div>
                 }
                 </div>
@@ -48,7 +48,7 @@
                <div class="mx-24 h-36 w-36 ">
                         <img src="@Cofoundry.Routing.ImageAsset(member.Photo)" class="rounded-full w-36 grayscale ease-in-out hover:sepia block " />
                         <div class="grid text-center">
-                            <span class="pt-2 font-lighter leading-relaxed tracking-wider font-sans text-sm">Meet @member.Name, @member.JobTitle</span>
+                            <span class="pt-2 font-lighter leading-relaxed tracking-wider font-sans text-sm"> @member.Name, @member.JobTitle</span>
                             <span class="pt-2 font-lighter leading-relaxed tracking-wider font-sans text-sm">@member.Location</span>
                         </div>
                     </div>
@@ -91,7 +91,6 @@
     </script>
 
       <style>
-
 
   
       .swiper {

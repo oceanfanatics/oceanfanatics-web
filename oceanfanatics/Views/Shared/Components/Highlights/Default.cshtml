@@ -8,8 +8,8 @@
     @foreach (var highlight in Model.Items)
     {
         <div class="transition ease-in-out delay-150    duration-300">
-            <div class="inline-block overflow-hidden">
-                <img src="@Cofoundry.Routing.ImageAsset(highlight.Photo)" class="grayscale w-full hover:-translate-y-1 hover:scale-110 block" />
+            <div class="inline-block overflow-hidden w-100">
+                <img src="@Cofoundry.Routing.ImageAsset(highlight.Photo)" class="grayscale w-full hover:-translate-y-1 hover:scale-110 block w-100 object-cover" style="height:inherit; max-height:400px; min-height:300px;" />
             </div>
             
             <div class="grid">
