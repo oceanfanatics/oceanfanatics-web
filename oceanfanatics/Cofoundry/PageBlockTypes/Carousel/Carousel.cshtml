@@ -31,7 +31,7 @@
                 <div class="carousel-item active relative float-left w-full">
                     <img src="@Cofoundry.Routing.ImageAsset(Model.Slides.ToArray()[i].Image)"
                          class="block w-full object-cover"
-                         alt="..." style="max-height:900px; min-height:400px"/>
+                         alt="..." style="height:700px"/>
                     <div id="carousel-caption" class="w-100 bottom-0 md:block absolute bg-blue bg-opacity-25 " >
                         <div class="md-lg:w-75   py-4 lg:py-16 px-4 text-white">
                             @if (Model.Slides.ToArray()[i].Link != null)
@@ -54,8 +54,8 @@
             {
                 <div class="carousel-item  relative float-left w-full">
                     <img src="@Cofoundry.Routing.ImageAsset(Model.Slides.ToArray()[i].Image)"
-                         class="block w-full"
-                         alt="..." />
+                         class="block w-full object-cover"
+                         alt="..." style="height:700px" />
                  
                    <div id="carousel-caption" class="w-100 bottom-2 md:block absolute bg-blue bg-opacity-25 " style="--tw-bg-opacity: .10" >
                         <div class=" w-75  py-8 lg:py-16 px-4 text-white">
