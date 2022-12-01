@@ -8,13 +8,13 @@
 
 <div id="animation-carousel" class="carousel slide relative" data-carousel="slide">
     <!-- Carousel wrapper -->
-    <div class="carousel-inner relative h-56 overflow-hidden rounded-lg md:h-100" style="height:700px">
+    <div class="carousel-inner relative h-56 overflow-hidden rounded-lg md:h-100" style="height:800px">
         @foreach (var slide in Model.Slides)
         {
             <div class="hidden duration-200 ease-linear overflow-hidden" data-carousel-item>
-                <img src="@Cofoundry.Routing.ImageAsset(slide.Image)" style="height:700px" class="absolute object-cover overflow-hidden block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                <img src="@Cofoundry.Routing.ImageAsset(slide.Image)" style="height:800px" class="absolute object-cover overflow-hidden block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                 <div class="text-start carousel-caption w-100 bottom-0 md:block absolute  bg-gradient-to-t from-slate-600 bg-opacity-10 left-auto right-0">
-                    <div class="md-lg:w-75   py-4 lg:py-16 px-4 text-white">
+                    <div class="w-100   py-4 lg:py-16 px-4 text-white">
                         @if (slide.Link != null)
                         {
                             <div class="mt-8">
@@ -24,8 +24,8 @@
                                 </a>
                             </div>
                         }
-                            <h2 class="lg:text-4xl md:text-3xl text-xl max-w-xl  leading-tight">@slide.Title</h2>
-                            <h5 class="lg:text-sm md:text-sm text-xs font-semibold mb-2 md:mb-4 tracking-wider">@slide.Text</h5>
+                            <h2 class="md-lg:text-5xl text-3xl font-bold max-w-xl leading-normal md:leading-tight mb-2">@slide.Title</h2>
+                            <h5 class="md:text-xl text-sm font-semibold mb-2 md:mb-4 tracking-wider">@slide.Text</h5>
                         </div>
                 </div>
             </div>
